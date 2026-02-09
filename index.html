@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Be My Valentine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="floating-hearts" aria-hidden="true"></div>
+    <canvas id="confetti" aria-hidden="true"></canvas>
+
+    <main class="page">
+      <section
+        id="scene-landing"
+        class="scene is-active"
+        aria-labelledby="landing-title"
+      >
+        <div class="scene-card">
+          <p class="eyebrow">Valentine vibes only</p>
+          <h1 id="landing-title">Hi <span id="recipientName">you</span> 💗</h1>
+          <p class="subtitle">I made this for you…</p>
+          <button id="startButton" class="btn btn-primary" type="button">
+            Start
+          </button>
+        </div>
+      </section>
+
+      <section
+        id="scene-ask"
+        class="scene"
+        aria-labelledby="ask-title"
+      >
+        <div class="scene-card">
+          <h2 id="ask-title">Will you be my Valentine?</h2>
+          <p id="noMessage" class="subtitle" aria-live="polite">
+            Don't leave me hanging…
+          </p>
+          <div class="button-row" id="askArea">
+            <button id="yesButton" class="btn btn-yes" type="button">
+              Yes 💘
+            </button>
+            <button
+              id="noButton"
+              class="btn btn-no"
+              type="button"
+              aria-label="No"
+            >
+              No 🙈
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="scene-celebrate"
+        class="scene"
+        aria-labelledby="celebrate-title"
+      >
+        <div class="scene-card">
+          <h2 id="celebrate-title">You said YES!! 🥰</h2>
+          <p class="subtitle" id="datePlan">Now you owe me a date ALL DAY!</p>
+
+          <div id="carousel" class="carousel" aria-label="Photo memories">
+            <div class="carousel-track" id="carouselTrack"></div>
+          </div>
+
+          <button id="openNote" class="btn btn-primary" type="button">
+            Open your note 💌
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <div id="modalOverlay" class="modal-overlay" aria-hidden="true">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="letterTitle"
+      >
+        <button class="modal-close" id="closeModal" aria-label="Close">
+          ×
+        </button>
+        <h3 id="letterTitle">A little love note</h3>
+        <div class="letter" id="letterText"></div>
+        <div class="modal-actions">
+          <button id="copyLetter" class="btn btn-soft" type="button">
+            Copy message
+          </button>
+          <button id="shareLink" class="btn btn-yes" type="button">
+            Share link
+          </button>
+        </div>
+        <p id="modalStatus" class="status" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

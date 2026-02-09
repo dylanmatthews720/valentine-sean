@@ -1,0 +1,282 @@
+:root {
+  color-scheme: light;
+  --bg: #ffe9f1;
+  --card: #ffffff;
+  --ink: #2d2230;
+  --muted: #6b5e6f;
+  --accent: #ff4f91;
+  --accent-soft: #ffd2e5;
+  --yes: #ff4f91;
+  --no: #9aa0a6;
+  --shadow: 0 18px 50px rgba(45, 34, 48, 0.18);
+  --radius: 18px;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: radial-gradient(circle at top, #fff4f9, var(--bg));
+  color: var(--ink);
+}
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 48px 20px 72px;
+  position: relative;
+}
+
+.scene {
+  display: none;
+  width: min(720px, 92vw);
+}
+
+.scene.is-active {
+  display: block;
+}
+
+.scene-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.eyebrow {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin: 0 0 8px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 12px;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.subtitle {
+  color: var(--muted);
+  margin: 0 0 20px;
+}
+
+.button-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  position: relative;
+  min-height: 48px;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(45, 34, 48, 0.15);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-yes {
+  background: var(--yes);
+  color: #fff;
+}
+
+.btn-no {
+  background: #f1f3f4;
+  color: #2d2d2d;
+  position: relative;
+}
+
+.btn-soft {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+.carousel {
+  display: none;
+  margin: 20px 0 0;
+}
+
+.carousel.is-active {
+  display: block;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 12px;
+  overflow: hidden;
+}
+
+.carousel-track img {
+  width: 100%;
+  border-radius: 14px;
+  display: none;
+  object-fit: cover;
+  box-shadow: 0 12px 30px rgba(45, 34, 48, 0.18);
+}
+
+.carousel-track img.is-active {
+  display: block;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 10, 18, 0.55);
+  display: none;
+  place-items: center;
+  padding: 24px;
+  z-index: 10;
+}
+
+.modal-overlay.is-open {
+  display: grid;
+}
+
+.modal {
+  width: min(720px, 94vw);
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px 26px 24px;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  background: #f2f2f2;
+  border-radius: 999px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.letter {
+  white-space: pre-wrap;
+  line-height: 1.6;
+  margin: 12px 0 18px;
+  color: var(--ink);
+}
+
+.modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.status {
+  margin: 10px 0 0;
+  color: var(--muted);
+}
+
+#confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.floating-hearts span {
+  position: absolute;
+  background: var(--accent);
+  border-radius: 4px;
+  transform: rotate(45deg);
+  animation: floatUp 8s linear infinite;
+}
+
+.floating-hearts span::before,
+.floating-hearts span::after {
+  content: "";
+  position: absolute;
+  background: var(--accent);
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.floating-hearts span::before {
+  top: -50%;
+  left: 0;
+}
+
+.floating-hearts span::after {
+  left: -50%;
+  top: 0;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(120vh) rotate(45deg);
+  }
+  to {
+    transform: translateY(-20vh) rotate(45deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .scene-card {
+    padding: 28px 20px;
+  }
+
+  .button-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
